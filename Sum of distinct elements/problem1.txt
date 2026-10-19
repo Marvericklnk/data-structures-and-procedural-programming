@@ -1,0 +1,15 @@
+PROCEDURE dot_product(
+    v1 : ARRAY_OF REAL,
+    v2 : ARRAY_OF REAL,
+    n : INTEGER,
+    VAR ps : REAL
+)
+VAR
+    i : INTEGER;
+BEGIN
+    ps := 0;
+
+    FOR i FROM 0 TO n-1 DO
+        ps := ps + v1[i] * v2[i];
+    END_FOR
+END

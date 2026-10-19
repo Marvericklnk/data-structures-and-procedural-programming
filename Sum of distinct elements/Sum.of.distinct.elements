@@ -1,0 +1,55 @@
+ALGORITHM sum_distinct
+VAR
+    set1 : ARRAY_OF INTEGER[100];
+    set2 : ARRAY_OF INTEGER[100];
+    n1, n2, i, j, sum : INTEGER;
+    found : BOOLEAN;
+BEGIN
+    Write("Enter the size of set 1:");
+    Read(n1);
+
+    FOR i FROM 0 TO n1-1 DO
+        Read(set1[i]);
+    END_FOR
+
+    Write("Enter the size of set 2:");
+    Read(n2);
+
+    FOR i FROM 0 TO n2-1 DO
+        Read(set2[i]);
+    END_FOR
+
+    sum := 0;
+
+    // Elements in set1 but not in set2
+    FOR i FROM 0 TO n1-1 DO
+        found := FALSE;
+
+        FOR j FROM 0 TO n2-1 DO
+            IF (set1[i] = set2[j]) THEN
+                found := TRUE;
+            END_IF
+        END_FOR
+
+        IF (found = FALSE) THEN
+            sum := sum + set1[i];
+        END_IF
+    END_FOR
+
+    // Elements in set2 but not in set1
+    FOR i FROM 0 TO n2-1 DO
+        found := FALSE;
+
+        FOR j FROM 0 TO n1-1 DO
+            IF (set2[i] = set1[j]) THEN
+                found := TRUE;
+            END_IF
+        END_FOR
+
+        IF (found = FALSE) THEN
+            sum := sum + set2[i];
+        END_IF
+    END_FOR
+
+    Write("Sum = ", sum);
+END

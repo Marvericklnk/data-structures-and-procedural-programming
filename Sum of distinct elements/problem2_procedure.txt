@@ -1,0 +1,33 @@
+ALGORITHM orthogonal_vectors
+VAR
+    v1 : ARRAY_OF REAL[100];
+    v2 : ARRAY_OF REAL[100];
+    n, pairs, i, j : INTEGER;
+    ps : REAL;
+BEGIN
+    Write("Enter number of vector pairs:");
+    Read(pairs);
+
+    FOR j FROM 1 TO pairs DO
+        Write("Enter vector size:");
+        Read(n);
+
+        Write("Enter first vector:");
+        FOR i FROM 0 TO n-1 DO
+            Read(v1[i]);
+        END_FOR
+
+        Write("Enter second vector:");
+        FOR i FROM 0 TO n-1 DO
+            Read(v2[i]);
+        END_FOR
+
+        dot_product(v1, v2, n, ps);
+
+        IF (ps = 0) THEN
+            Write("Vectors are orthogonal");
+        ELSE
+            Write("Vectors are not orthogonal");
+        END_IF
+    END_FOR
+END
