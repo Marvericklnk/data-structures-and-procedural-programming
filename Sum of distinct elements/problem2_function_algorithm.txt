@@ -1,0 +1,35 @@
+ALGORITHM orthogonal_vectors_with_function
+VAR
+    v1 : ARRAY_OF REAL[100];
+    v2 : ARRAY_OF REAL[100];
+    n, pairs, i, j : INTEGER;
+    ps : REAL;
+BEGIN
+    Write("Enter number of vector pairs:");
+    Read(pairs);
+
+    FOR j FROM 1 TO pairs DO
+        Write("Enter vector size (1 to 100):");
+        Read(n);
+
+        Write("Enter first vector:");
+        FOR i FROM 0 TO n-1 DO
+            Read(v1[i]);
+        END_FOR
+
+        Write("Enter second vector:");
+        FOR i FROM 0 TO n-1 DO
+            Read(v2[i]);
+        END_FOR
+
+        // Use the function defined in problem2_function.txt.
+        // Assign its return value instead of passing ps by reference.
+        ps := dot_product(v1, v2, n);
+
+        IF (ps = 0) THEN
+            Write("Vectors are orthogonal");
+        ELSE
+            Write("Vectors are not orthogonal");
+        END_IF
+    END_FOR
+END
